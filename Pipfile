@@ -1,0 +1,26 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+lxml = "*"
+html5lib = "*"
+xlrd = "*"
+nb-black = "*"
+pandas = "*"
+jupyter = "*"
+openpyxl = "*"
+jupyterlab = "*"
+matplotlib = "*"
+altair = "*"
+tornado = "*"
+cython = "*"
+bs4 = "*"
+altair-grid = "*"
+nltk = "*"
+
+[requires]
+python_version = "3.8"

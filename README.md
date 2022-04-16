@@ -1,2 +1,3 @@
-# trump-releases
-Archiving statements and endorsements release on former President Trump's website. 
+# Archiving former Presidents Trump's news feed
+
+This repo contains a Github action that finds and archives any new endorsements or statements released on the former president's website. It runs twice per day. 
