@@ -3,7 +3,7 @@ name: get-trump-statements
 on:
   workflow_dispatch:
   schedule:
-    - cron: '00 01,13 * * *' # runs at 6 am and 6 pm Pacific everyday 
+    - cron: '3 * * * *' # runs at minute three each hour
 
 jobs:
   build:
