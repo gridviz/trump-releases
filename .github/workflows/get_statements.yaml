@@ -24,6 +24,10 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script # pull the last 10 statements, merge with archive, dedupe, commit
+        env: 
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
         run: |
           python get_statements.py
           
