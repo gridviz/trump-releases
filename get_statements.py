@@ -82,7 +82,9 @@ latest_df.to_csv(f"data/processed/archives_timeseries/all_press_releases_archive
 
 merged_df.to_csv(f"data/processed/all_press_releases_latest.csv", index=False)
 
-if len(archive_df) < len(latest_df):
+record_count = len(merged_df) + len(archive_df)
+
+if record_count < len(latest_df):
     diff = len(latest_df) - len(archive_df)
     email = f"We've scraped {diff} new item(s) from the former president's news site. See the latest here: https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_latest.csv"
     subject = f'New scraper result: {diff} new item(s)'
