@@ -1,6 +1,10 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+import os
+import datetime as dt
+import smtplib
+from email.message import EmailMessage
 
 today = pd.to_datetime("today").strftime("%Y-%m-%d")
 
@@ -77,3 +81,22 @@ latest_df = pd.concat([archive_df, merged_df]).reset_index(drop='True').drop_dup
 latest_df.to_csv(f"data/processed/archives_timeseries/all_press_releases_archive_{today}.csv", index=False)
 
 merged_df.to_csv(f"data/processed/all_press_releases_latest.csv", index=False)
+
+email = f"Good news. We've scraped Donald Trump's 'news' posts and found something!"
+
+# get email and password from environment variables
+EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT')
+    
+# set up email content
+msg = EmailMessage()
+msg['Subject'] = 'New Trump scraper result'
+msg['From'] = EMAIL_ADDRESS
+msg['To'] = EMAIL_RECIPIENT
+msg.set_content(f'{email}')
+    
+# send email
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+    smtp.send_message(msg)
