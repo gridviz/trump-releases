@@ -82,7 +82,13 @@ latest_df.to_csv(f"data/processed/archives_timeseries/all_press_releases_archive
 
 merged_df.to_csv(f"data/processed/all_press_releases_latest.csv", index=False)
 
-email = f"Good news. We've scraped Donald Trump's 'news' posts and found something!"
+if len(archive_df) < len(latest_df):
+    diff = len(latest_df) - len(archive_df)
+    email = f"We've scraped {diff} new item(s) from the former president's news site. See the latest here: https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_latest.csv"
+    subject = f'New scraper result: {diff} new item(s)'
+else: 
+    email = 'The scrape turned up nothing new.'
+    subject = 'New scraper result: Nothing to see here.'
 
 # get email and password from environment variables
 EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
@@ -91,7 +97,7 @@ EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT')
     
 # set up email content
 msg = EmailMessage()
-msg['Subject'] = 'New Trump scraper result'
+msg['Subject'] = subject
 msg['From'] = EMAIL_ADDRESS
 msg['To'] = EMAIL_RECIPIENT
 msg.set_content(f'{email}')
