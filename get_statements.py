@@ -86,8 +86,12 @@ record_count = len(merged_df) + len(archive_df)
 
 if record_count < len(latest_df):
     diff = len(latest_df) - len(archive_df)
-    email = f"We've scraped {diff} new item(s) from the former president's news site. See the latest here: https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_latest.csv"
-    subject = f'New scraper result: {diff} new item(s)'
+    if diff > 1:
+        email = f"We've scraped {diff} new items from the former president's news site. See the latest here: https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_latest.csv"
+        subject = f'New Trump scraper result: {diff} new items!'
+    else: 
+        email = f"We've scraped a new item from the former president's news site. See the latest here: https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_latest.csv"
+        subject = f'New Trump scraper result: one new item!'
 else: 
     email = 'The scrape turned up nothing new.'
     subject = 'New scraper result: Nothing to see here.'
