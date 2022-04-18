@@ -12,7 +12,7 @@ This repo contains a Github action that finds and archives any new posts on the 
 
 | TABLE   |      DESCRIPTION  |    
 |----------|-------------|
-| [all_press_releases_archive.csv](https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_archive.csv) |  All of Trump's 3,000+ statements since Jan. 17, 2021 |
+| [all_press_releases_archive.csv](https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_archive.csv) |  All of Trump's 1,500+ statements since Jan. 17, 2021 |
 [all_press_releases_latest.csv](https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_latest.csv) |  Trump's most recent 10 statements|
 
 
