@@ -122,9 +122,9 @@ new_archive_df.to_csv(f"data/processed/all_press_releases_archive.csv", index=Fa
 
 ### Send an email with tailored messages based on whether there's new stuff
 
-diff = (len(new_archive_df) - len(archive_df)) - len(new_df)
+diff = len(new_archive_df) - len(archive_df)
 
-if diff >= 1:
+if len(new_archive_df) > len(archive_df):
     if diff > 1:
         email = f"We've scraped {diff} new items from the former president's news site. See the latest here: https://github.com/gridviz/trump-releases/blob/main/data/processed/all_press_releases_latest.csv"
         subject = f'New Trump scraper result: {diff} new items!'
