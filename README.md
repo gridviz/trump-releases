@@ -1,6 +1,6 @@
 # Archiving former Presidents Trump's news feed
 
-This repo contains a Github action that finds and archives any new posts on the ["news" section](https://www.donaldjtrump.com/news) of the former president's website. These posts typically consist of four categories: 
+This repo contains a Github action that finds and archives any new posts on the ["news"](https://www.donaldjtrump.com/news) section of the former president's website. These posts typically consist of four categories: 
 
 - [New candidate endorsements](https://www.donaldjtrump.com/news/news-6hxhjdufq21851)
 - [Official statements](https://www.donaldjtrump.com/news/news-mvrzrvg5d61849) 
