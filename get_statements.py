@@ -80,4 +80,15 @@ text_df["body_text"] = text_df["body_text"].str.replace("\n", "")
 ### Merge the metadata and post text into one dataframe
 
 new_df = pd.merge(df, text_df, on=["url"])
-new_df.to_csv('data/processed/all_press_releases_archive.csv', index=False)
+
+new_df.to_csv('data/processed/all_press_releases_latest.csv', index=False)
+
+#### Merge with archive
+
+archive_df = pd.read_csv('data/processed/all_press_releases_archive.csv')
+
+latest_archive_df = pd.concat([new_df, archive_df]).drop_duplicates()
+
+latest_archive_df['date'] = pd.to_datetime(latest_archive_df['date']).dt.strftime('%Y-%m-%d')
+
+latest_archive_df.to_csv('data/processed/all_press_releases_archive.csv', index=False)
