@@ -36,7 +36,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "update data" -a --allow-empty
+          git commit -m "update data" -a --allow-empty --author="stiles <stiles@users.noreply.github.com>"
           
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
