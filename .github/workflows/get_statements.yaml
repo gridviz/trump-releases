@@ -3,7 +3,7 @@ name: get-trump-statements
 on:
   workflow_dispatch:
   schedule:
-    - cron: '3 * * * *' # runs at minute three each hour
+    - cron: '0 9,21 * * *' # runs twice a day
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "update data" -a --allow-empty --author="stiles <stiles@users.noreply.github.com>"
+          git commit -m "update data" -a --allow-empty
           
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
